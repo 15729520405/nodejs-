@@ -18,8 +18,10 @@ app.use(koaStatic(path.join(__dirname, '/public')));
 
 // 返回JSON格式的错误
 app.use(error({
-    postFormat: (error, { stack, ...reset}) => process.env.Node_ENV === 'production' ? reset : { stack, ...reset }
+    postFormat: (error, { stack, ...reset}) => process.env.NODE_ENV === 'production' ? reset : { stack, ...reset }
 }));
+
+console.log('NODE_ENV 环境变脸：', process.env.NODE_ENV);
 
 // 使路由可解析body
 app.use(koaBody({
